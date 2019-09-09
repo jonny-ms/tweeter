@@ -1,0 +1,21 @@
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  padding: 1.5em;
+  background-color: #4056A1;
+  height: 120px;
+  color: #FFFFFF;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+#logo {
+  font-family: 'Bungee', cursive;
+  font-size: 1.5em;
+  position: relative;
+  top: 10px; 
+}
