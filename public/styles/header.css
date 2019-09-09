@@ -1,0 +1,17 @@
+header {
+  /* position: relative; */
+  height: 400px;
+  width: 100%;
+  background-color: #a4acc5;
+  background-image: url("https://www.transparenttextures.com/patterns/washi.png");
+}
+
+header div {
+  position: relative;
+  text-align: center;
+}
+
+header div img {
+  position: relative;
+  top: 60px;
+}
