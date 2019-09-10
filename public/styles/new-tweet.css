@@ -9,9 +9,10 @@ section.new-tweet textarea {
   border: none;
   border-bottom: 3px solid #585858;
   width: 100%;
-  overflow: hidden;
+  overflow: auto;
   margin-bottom: 10px;
   resize: none;
+  outline: none;
 }
 
 section.new-tweet input {
