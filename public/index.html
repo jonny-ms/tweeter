@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
@@ -26,29 +27,55 @@
     <!-- Top nav bar (fixed) -->
     <nav>
       <span id="logo">tweeter</span>
+      <div>
       <span id="post"><strong>Write</strong> a new tweet</span>
+      <span>&#8675</span>
+     </div>
     </nav>
 
-    <header>
+    <header id="first">
         <div>
-            <img src="/images/profile-hex.png"> 
+            <img class="avatar" src="/images/profile-hex.png"> 
         </div>
         <br>
-        <div>
+        <div class="user">
             <h2>Jonathan Milne-Skarzenski</h2>
         </div>
     </header>
 
     <!-- Page-specific (main) content here -->
-    <main class="container">
+    <main id="container">
         <section class="new-tweet">
-            <h2>Compose Tweet</h2>
-            <form action="/tweets" method="POST">
-              <textarea name="text" placeholder="What are you humming about?"></textarea>
-              <input type="submit" value="Tweet">
-              <span class="counter">140</span>
-            </form>
-          </section>
+          <h2>Compose Tweet</h2>
+          <form action="/tweets" method="POST">
+            <textarea name="text" placeholder="What are you humming about?"></textarea>
+            <input type="submit" value="Tweet">
+            <span class="counter">140</span>
+          </form>
+        </section>
+        
+        <section id="tweets-container">
+        <article id="tweets">
+          <header>
+            <div class="tweet-avatar">
+              <img src="/images/isaac-newton.svg">
+              <span class="username">Newton</span>
+            </div>
+            <span class="handle">@SirIsacc</span>
+          </header>
+
+          <p>If I have seen further it is by standing on the shoulders of giants</p>
+
+          <footer>
+            <span>10 days ago</span>
+            <div>
+              <img src="/images/retweet.svg">
+              <img src="/images/like.svg">
+            </div>
+          </footer>
+        </article>
+        </section>
+
       <p>This is placeholder text</p>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, tempore at error reprehenderit molestiae accusantium similique sunt dicta et enim, delectus porro eveniet iure nisi, dolorem in aliquam maxime officiis!</p>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, tempore at error reprehenderit molestiae accusantium similique sunt dicta et enim, delectus porro eveniet iure nisi, dolorem in aliquam maxime officiis!</p>
@@ -61,4 +88,7 @@
     </main>
 
   </body>
+
+  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+  
 </html>
