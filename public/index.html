@@ -7,8 +7,8 @@
 
   <!-- External CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Bungee|Source+Sans+Pro:300,300i,700,700i&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bungee|Source+Sans+Pro:300,300i,700,700i&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
 
   <!-- App CSS -->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -16,12 +16,14 @@
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
   <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/desktop-layout.css" type="text/css" />
 
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 </head>
 
 <body>
@@ -29,17 +31,19 @@
   <!-- Top nav bar (fixed) -->
   <nav>
     <span id="logo">tweeter</span>
-    <div>
-      <span id="post"><strong>Write</strong> a new tweet</span>
-      <button type="button" name="Write new tweet">
-          <span>&#8675</span>
-      </button>
+    <button type="button" name="Write new tweet">
+    <div id="form-toggle">
+        <span><strong>Write</strong> a new tweet</span>
+        <span>&#8675</span>
     </div>
+  </button>
+
   </nav>
 
+  <!-- Header containing avatar and username. -->
   <header id="first">
     <div>
-      <img class="avatar" src="/images/profile-hex.png">
+      <img class="avatar" src="/images/profile.svg">
     </div>
     <br>
     <div class="user">
@@ -47,10 +51,11 @@
     </div>
   </header>
 
-  <!-- Page-specific (main) content here -->
   <main class="container">
+
+    <!-- Compose new tweet form -->
     <section class="new-tweet">
-      <div class="error too-long">&#x26a0; Tweet is too long! Too dangerous render this much text!  &#9888;</div>
+      <div class="error too-long">&#x26a0; Tweet is too long! Too dangerous to render this much text!  &#9888;</div>
       <div class="error no-input">&#x26a0; That's not a hum!  &#9888;</div>      
       <form action="/tweets" method="POST" id="post-tweet">
         <textarea name="text" placeholder="What are you humming about?"></textarea>
@@ -59,15 +64,10 @@
       </form>
     </section>
 
+    <!-- Container within which tweets are rendered -->
     <section id="tweets-container"></section>
 
-    <button type="button" name="scroll-to-top" id="to-top">
-      <img src="/images/scroll-to-top.svg" alt="scroll-to-top" id="scroll-to-top">
-    </button>
+    <img src="/images/scroll-to-top.png" alt="scroll-to-top" id="scroll-to-top">
   </main>
-
 </body>
-
-<script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-
 </html>
