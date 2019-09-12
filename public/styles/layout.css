@@ -27,6 +27,10 @@ main.container {
   background-color: #f4f1ec;
 }
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+#scroll-to-top {
+  width: 40px;
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  display: none;
+}
