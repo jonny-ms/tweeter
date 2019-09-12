@@ -1,0 +1,19 @@
+/*Layout shifter for desktop and landscape orientation*/
+
+@media (min-width: 1024px), (orientation: landscape) {
+  main.container {
+    width: 50%;
+    margin-top: 8%;
+    background-color: #f4f1ec;
+  }
+
+  header#first {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+    border-radius: 15px;
+    border: 2px solid #690589;
+    box-shadow: 5px 10px 10px grey;
+  }
+}
