@@ -23,6 +23,11 @@ section.new-tweet input {
   font-family: 'Bungee', cursive;
 }
 
+section.new-tweet input:hover {
+  box-shadow: 4px 4px 8px #969696;
+  cursor: pointer;
+}
+
 section.new-tweet span {
   font-family: 'Bungee', cursive;
   color: #585858;

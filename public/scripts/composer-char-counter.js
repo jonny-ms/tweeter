@@ -1,4 +1,8 @@
 $(document).ready(() => {
+ characterCounter();
+});
+
+const characterCounter = () => {
   $(".new-tweet form textarea").on("keyup", function() {
 
     let remaining = (140 - $(this).val().length);
@@ -10,4 +14,4 @@ $(document).ready(() => {
       $(this).parent().find("span.counter").text(remaining).css("color", "#585858")
     }
   });
-});
+}
