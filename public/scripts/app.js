@@ -9,104 +9,110 @@ const printDate = (minutes) => {
   } else return `${Math.round(minutes/525600)} years ago`
 }
 
+//XSS escape function
+const escape = (text) => {
+  let p = document.createElement('p');
+  p.appendChild(document.createTextNode(text));
+  return p.innerHTML;
+}
+
 const createTweetElement = (data) => {
   let minutes = Math.round((Date.now() - data.created_at) / 60000);
     return(
     `<article id="tweets">
-    <header>
-    <div class="tweet-avatar">
-      <img src=${data.user.avatars}>
-      <span class="username">${data.user.name}</span>
-    </div>
-    <span class="handle">${data.user.handle}</span>
-  </header>
-  <p>${data.content.text}</p>
-  <footer>
-    <span>${printDate(minutes)}</span>
-    <div>
-      <img src="/images/retweet.svg">
-      <img src="/images/like.svg">
-    </div>
-  </footer>
-  </article>`)
+      <header>
+      <div class="tweet-avatar">
+        <img src=${data.user.avatars}>
+        <span class="username">${data.user.name}</span>
+      </div>
+      <span class="handle">${data.user.handle}</span>
+      </header>
+
+      <p>${escape(data.content.text)}</p>
+
+      <footer>
+        <span>${printDate(minutes)}</span>
+        <div>
+          <img src="/images/retweet.svg">
+          <img src="/images/like.svg">
+        </div>
+      </footer>
+      </article>`)
 }
 
-const renderTweets = data => {
-  const feed = $('#tweets-container')
-  data.forEach(tweet => {
-  feed.append(createTweetElement(tweet))
+const renderTweets = data => {  
+  const feed = $('#tweets-container');
+  data.reverse().forEach(tweet => {
+    feed.append(createTweetElement(tweet));
+  });
+}
+
+const loadTweets = () => {
+  $("#tweets-container").empty();
+  $.ajax({
+    url: "/tweets",
+    method: "GET",
+    dataType: "JSON",
+  })
+  .then(response => {
+    renderTweets(response);
   })
 }
 
-// Test / driver code (temporary)
-
-const tweetData = [
-  
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
-
 $(document).ready(() => {
-  renderTweets(tweetData);
-
-  loadTweets()
-
-  
+  loadTweets();
 });
-
-
 
 
 $(function() {
   $('#post-tweet').submit(function (event) {
-  event.preventDefault()
-  const input = $(this).serialize()
-    $.ajax({ 
-      url: "/tweets",
-      method: 'POST',
-      data: input
-     })
-      .then(response => {
-        console.log(response, input)
+  event.preventDefault();
+  const input = $(this).serialize();
+  const tweetLength = $(this).find("textarea").val().length;
+
+    if (tweetLength > 140) {
+      $("section.new-tweet .error.too-long").slideDown();
+    } else if (tweetLength === 0) {
+      $("section.new-tweet .error.no-input").slideDown();
+    } else {
+      $("section.new-tweet .error").slideUp();
+      $(this).find("textarea").val("")
+      $(this).find(".counter").text(140)
+
+      $.ajax({ 
+        url: "/tweets",
+        method: 'POST',
+        data: input
       })
-  });
+      .then(() => {
+        loadTweets();
+      })
+    }
+  })
 })
 
-const loadTweets = () => {
-  $.ajax({
-    url: "/tweets",
-    method: "GET",
-    dataType: "JSON"
-  }).then(response => {
-    renderTweets(response)
+//"Write a new tweet" button functionality. On click, toggle slides form up and down"
+$(function() {
+  $("nav button").click(() => {
+    $(".new-tweet").slideToggle();
+    $("section.new-tweet .error").slideUp();
   })
-}
-
-
-const postTweet = function() {
-};
-
-  
+})
 
 
 
+$(function() {
+  $("#scroll-to-top").click(() => {
+    $("html, body").scrollTop(0);
+  })
+})
+
+$(function() {
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > 600) {
+      $("#scroll-to-top").show();
+    } else{
+      $("#scroll-to-top").hide();
+    }
+  })
+})
