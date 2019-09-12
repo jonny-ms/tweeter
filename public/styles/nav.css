@@ -19,3 +19,18 @@ nav {
   position: relative;
   top: 10px; 
 }
+
+nav div {
+  display: flex;
+  flex-direction: column;
+}
+
+nav div span {
+  text-align: center;
+  color: #FFF;
+}
+
+nav div button {
+  background-color: transparent;
+  border: 1px solid transparent;
+}
