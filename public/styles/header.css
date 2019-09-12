@@ -1,20 +1,30 @@
 header#first {
-  height: 520px;
+  height: 400px;
   width: 100%;
-  background-color: #a4acc5;
+  margin-top: 120px;
+  background-color: #f0f3ff;
   background-image: url("https://www.transparenttextures.com/patterns/washi.png");
 }
 
 header#first div {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
 }
 
 header#first div img {
+  display: block;
   position: relative;
-  top: 140px;
+  top: 20px;
+  width: 250px
 }
 
-header#first div.user {
+header#first div.user h2 {
   position: relative;
-  bottom: -100px
+  top: 20px;
+  margin: auto;
+  font-family: 'Manjari', sans-serif;
+  color: #585858
 }
