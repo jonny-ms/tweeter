@@ -28,9 +28,16 @@ nav div {
 nav div span {
   text-align: center;
   color: #FFF;
+  transition: all .2s ease-in-out; 
 }
 
-nav div button {
+nav button {
   background-color: transparent;
   border: 1px solid transparent;
+  outline: none;
+}
+
+nav div span:hover {
+  cursor: pointer;
+  transform: scale(1.2);
 }
