@@ -1,94 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Meta Information -->
-    <title>Tweeter - Home Page</title>
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Bungee|Source+Sans+Pro:300,300i,700,700i&display=swap" rel="stylesheet">
+<head>
+  <!-- Meta Information -->
+  <title>Tweeter - Home Page</title>
 
-    <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Bungee|Source+Sans+Pro:300,300i,700,700i&display=swap"
+    rel="stylesheet">
 
-    <!-- External JS -->
-    <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
 
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+  <!-- External JS -->
+  <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
-  <body>
+  <!-- App JS -->
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
 
-    <!-- Top nav bar (fixed) -->
-    <nav>
-      <span id="logo">tweeter</span>
-      <div>
+<body>
+
+  <!-- Top nav bar (fixed) -->
+  <nav>
+    <span id="logo">tweeter</span>
+    <div>
       <span id="post"><strong>Write</strong> a new tweet</span>
-      <span>&#8675</span>
-     </div>
-    </nav>
+      <button type="button" name="Write new tweet">
+          <span>&#8675</span>
+      </button>
+    </div>
+  </nav>
 
-    <header id="first">
-        <div>
-            <img class="avatar" src="/images/profile-hex.png"> 
-        </div>
-        <br>
-        <div class="user">
-            <h2>Jonathan Milne-Skarzenski</h2>
-        </div>
-    </header>
+  <header id="first">
+    <div>
+      <img class="avatar" src="/images/profile-hex.png">
+    </div>
+    <br>
+    <div class="user">
+      <h2>Jonathan Milne-Skarzenski</h2>
+    </div>
+  </header>
 
-    <!-- Page-specific (main) content here -->
-    <main id="container">
-        <section class="new-tweet">
-          <h2>Compose Tweet</h2>
-          <form action="/tweets" method="POST">
-            <textarea name="text" placeholder="What are you humming about?"></textarea>
-            <input type="submit" value="Tweet">
-            <span class="counter">140</span>
-          </form>
-        </section>
-        
-        <section id="tweets-container">
-        <article id="tweets">
-          <header>
-            <div class="tweet-avatar">
-              <img src="/images/isaac-newton.svg">
-              <span class="username">Newton</span>
-            </div>
-            <span class="handle">@SirIsacc</span>
-          </header>
+  <!-- Page-specific (main) content here -->
+  <main class="container">
+    <section class="new-tweet">
+      <div class="error too-long">&#x26a0; Tweet is too long! Too dangerous render this much text!  &#9888;</div>
+      <div class="error no-input">&#x26a0; That's not a hum!  &#9888;</div>      
+      <form action="/tweets" method="POST" id="post-tweet">
+        <textarea name="text" placeholder="What are you humming about?"></textarea>
+        <input type="submit" value="Tweet">
+        <span class="counter">140</span>
+      </form>
+    </section>
 
-          <p>If I have seen further it is by standing on the shoulders of giants</p>
+    <section id="tweets-container"></section>
 
-          <footer>
-            <span>10 days ago</span>
-            <div>
-              <img src="/images/retweet.svg">
-              <img src="/images/like.svg">
-            </div>
-          </footer>
-        </article>
-        </section>
+    <button type="button" name="scroll-to-top" id="to-top">
+      <img src="/images/scroll-to-top.svg" alt="scroll-to-top" id="scroll-to-top">
+    </button>
+  </main>
 
-      <p>This is placeholder text</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, tempore at error reprehenderit molestiae accusantium similique sunt dicta et enim, delectus porro eveniet iure nisi, dolorem in aliquam maxime officiis!</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, tempore at error reprehenderit molestiae accusantium similique sunt dicta et enim, delectus porro eveniet iure nisi, dolorem in aliquam maxime officiis!</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, tempore at error reprehenderit molestiae accusantium similique sunt dicta et enim, delectus porro eveniet iure nisi, dolorem in aliquam maxime officiis!</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, tempore at error reprehenderit molestiae accusantium similique sunt dicta et enim, delectus porro eveniet iure nisi, dolorem in aliquam maxime officiis!</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, tempore at error reprehenderit molestiae accusantium similique sunt dicta et enim, delectus porro eveniet iure nisi, dolorem in aliquam maxime officiis!</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, tempore at error reprehenderit molestiae accusantium similique sunt dicta et enim, delectus porro eveniet iure nisi, dolorem in aliquam maxime officiis!</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, tempore at error reprehenderit molestiae accusantium similique sunt dicta et enim, delectus porro eveniet iure nisi, dolorem in aliquam maxime officiis!</p>
+</body>
 
-    </main>
+<script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
-  </body>
-
-  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-  
 </html>
