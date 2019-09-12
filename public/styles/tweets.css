@@ -34,7 +34,6 @@ header .tweet-avatar {
   display: none;
 }
 
-
 #tweets p {
   margin-left: 0.3em;
 }
@@ -49,5 +48,11 @@ header .tweet-avatar {
 }
 
 #tweets footer img {
-  width: 20px;
+  width: 15px;
+  display: none;
+}
+
+article#tweets:hover footer img {
+  display: inline;
+  cursor: pointer;
 }
